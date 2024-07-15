@@ -33,7 +33,6 @@ public class CICDCont {
       msg = "/cide workflow 테스트";
       log.info(msg);
     }
-    
+
     return "<h3>" + msg + "</h3>";
   }
-}
