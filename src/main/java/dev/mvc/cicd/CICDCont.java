@@ -19,14 +19,14 @@ public class CICDCont {
   @GetMapping("/cicd")
   public String cicd(@RequestParam(defaultValue = "1") Integer sw) { // defaultValue = "1" -> 1
     String msg = "";
-    
+
     if (sw == -1) {
       msg = "/cide 호출됨, error 로그";
       log.error(msg);
     } else if (sw == 0) {
       msg = "/cide 호출됨, warn 로그";
       log.warn(msg);
-    }else if (sw == 1) {
+    } else if (sw == 1) {
       msg = "/cicd 호출됨, info 로그";
       log.info(msg);
     } else if (sw == 2) {
@@ -36,3 +36,4 @@ public class CICDCont {
 
     return "<h3>" + msg + "</h3>";
   }
+}
