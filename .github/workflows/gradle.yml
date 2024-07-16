@@ -29,8 +29,18 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
     - name: Run chmod to make gradlew executable
-      run: chmod +x ./gradlew        
+      run: chmod +x ./gradlew
     - name: Build with Gradle
       uses: gradle/actions/setup-gradle@417ae3ccd767c252f5661f1ace9f835f9654f2b5 # v3.1.0
       with:
         arguments: build
+    - name: executing remote ssh commands using ssh key
+      uses: appleboy/ssh-action@v0.1.10
+      with:
+        host: ${{ secrets.SERVER_HOST }}
+        username: ${{ secrets.SERVER_USERNAME }}
+        key: ${{ secrets.SERVER_KEY }}
+        port: ${{ secrets.SERVER_PORT }}
+        script: |
+          whoami
+          ls -al
